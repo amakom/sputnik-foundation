@@ -57,5 +57,14 @@ function themeColors(){
         }
         document.querySelector("[data-js-theme-color=" + localStorage.getItem("color") + "]").classList.add("active");
     }
+
+
+    if(localStorage.getItem("color") !== null){
+        setColor();
+    }
+    else{
+        const defaultColor = colorStyle.getAttribute("href").split("/").pop().split(".").shift();
+        document.querySelector("[data-js-theme-color=" + defaultColor + "]").classList.add("active");
+    }
 }
 themeColors();
