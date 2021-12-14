@@ -430,11 +430,15 @@ textarea.form-control {
   position: fixed;
   height: 100%;
   background-color: var(--white);
-  right: 0;
+  right: -250px;
   top: 0;
   z-index: 10;
   padding: 30px;
   box-shadow: var(--shadow);
+  transition: right 0.3s ease;
+}
+.style-switcher.open {
+  right: 0;
 }
 .style-switcher-toggler {
   height: 40px;
@@ -450,7 +454,6 @@ textarea.form-control {
   border-radius: 8px 0 0 8px;
   cursor: pointer;
 }
-
 .style-switcher h3 {
   font-size: 18px;
   text-transform: capitalize;
@@ -475,6 +478,13 @@ textarea.form-control {
   content: "\f00c";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
+  font-size: 12px;
+  color: var(--WHITE);
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .theme-colors .color-1 {
   background-color: hsl(0, 74%, 61%);
