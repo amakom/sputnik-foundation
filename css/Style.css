@@ -325,6 +325,12 @@ h6 {
 .btn-theme:focus {
   box-shadow: 0 0 8px var(--main-color);
 }
+.btn-block {
+  width: 100%;
+}
+.btn-form {
+  height: 48px;
+}
 /*-------------------------------
  10. =page loader
 ---------------------------------*/
@@ -358,7 +364,34 @@ h6 {
 /*-------------------------------
  12. =forms
 ---------------------------------*/
-
+.form-title {
+  font-size: 24px;
+  margin: 0 0 30px;
+  font-weight: 600;
+}
+.form-control::placeholder {
+  color: var(--black-70);
+}
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+.form-control {
+  height: 48px;
+  border-color: var(--border-color-1);
+  color: var(--black-90);
+  background-color: transparent;
+}
+.form-control:focus {
+  background-color: transparent;
+  border-color: var(--border-color-1);
+  color: var(--black-90);
+  box-shadow: none;
+}
+textarea.form-control {
+  height: 120px;
+  resize: none;
+}
 /*-------------------------------
  13. =video model
 ---------------------------------*/
@@ -370,7 +403,17 @@ h6 {
 /*-------------------------------
  15. =breadcrumbs
 ---------------------------------*/
-
+.breadcrumb-nav {
+  padding: 10px 0;
+}
+.breadcrumb-nav .breadcrumb-item {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.breadcrumb-nav .breadcrumb-item + .breadcrumb-item::before,
+.breadcrumb-nav .breadcrumb-item.active {
+  color: var(--black-70);
+}
 /*-------------------------------
  16. =tabs
 ---------------------------------*/
@@ -382,7 +425,72 @@ h6 {
 /*-------------------------------
  18. =style switcher
 ---------------------------------*/
+.style-switcher {
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  background-color: var(--white);
+  right: 0;
+  top: 0;
+  z-index: 10;
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+.style-switcher-toggler {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 28%;
+  left: -40px;
+  background-color: var(--main-color);
+  color: var(--WHITE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+}
 
+.style-switcher h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+  border-bottom: 1px solid var(--border-color-1);
+  padding: 0 0 10px;
+}
+.style-switcher-item {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color-1);
+}
+.theme-colors button {
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 50%;
+  vertical-align: middle;
+  border-radius: 50%;
+  padding: 0;
+  position: relative;
+}
+.theme-colors button::before {
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.theme-colors .color-1 {
+  background-color: hsl(0, 74%, 61%);
+}
+.theme-colors .color-2 {
+  background-color: hsl(230, 74%, 61%);
+}
+.theme-colors .color-3 {
+  background-color: hsl(36, 74%, 61%);
+}
+.theme-colors .color-4 {
+  background-color: hsl(277, 74%, 61%);
+}
+.theme-colors .color-5 {
+  background-color: hsl(164, 74%, 61%);
+}
 /*-------------------------------
  19. =header
 ---------------------------------*/
@@ -680,3 +788,21 @@ h6 {
 /*-------------------------------
  27. =contact section
 ---------------------------------*/
+.contact-item {
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 40px;
+}
+.contact-item .icon-box {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  color: var(--WHITE);
+}
