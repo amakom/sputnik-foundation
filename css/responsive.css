@@ -127,6 +127,25 @@
     visibility: visible;
     opacity: 0.8;
   }
+  .circular-img {
+    max-width: 280px;
+  }
+  .circular-img img {
+    max-width: 240px;
+  }
+  .circular-img-circle {
+    height: 280px;
+    width: 280px;
+  }
+  .banner-text h1 {
+    font-size: 35px;
+  }
+  .section-title .sub-title {
+    font-size: 30px;
+  }
+  .why-us-item {
+    width: calc(50% - 30px);
+  }
 }
 
 @media (max-width: 767px) {
