@@ -22,17 +22,23 @@ header menu
 -----------------------------------*/
 function headerMenu(){
     const menu = document.querySelector(".js-header-menu"),
-    backdrop = document.querySelector("js-header-backdrop"),
+    backdrop = document.querySelector(".js-header-backdrop"),
     menuCollapseBreakpoint = 991;
 
     function toggleMenu(){
         menu.classList.toggle("open");
+        backdrop.classList.toggle("active");
         document.body.classList.toggle("overflow-hidden");
     }
 
     document.querySelectorAll(".js-header-menu-toggler").forEach((item) => {
         item.addEventListener("click", toggleMenu);
     });
+
+    // close the menu by clicking outside of it
+    backdrop.addEventListener("click", toggleMenu);
+
+
 
     function collapse(){
         menu.querySelector(".active .js-sub-menu").removeAttribute("style");
