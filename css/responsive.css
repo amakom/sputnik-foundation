@@ -137,6 +137,10 @@
     height: 280px;
     width: 280px;
   }
+  .btn-theme {
+    font-size: 16px;
+    padding: 6px 18px;
+  }
   .banner-text h1 {
     font-size: 35px;
   }
@@ -151,12 +155,61 @@
 }
 
 @media (max-width: 767px) {
+  .container {
+    --bs-gutter-x: 15px;
+  }
+  .box {
+    padding: 20px 15px;
+  }
+  .banner-text h1 {
+    font-size: 24px;
+  }
+  .banner-text h2 {
+    font-size: 18px;
+  }
+  .bai-section {
+    text-align: center;
+  }
+  .section-title .title,
+  h3,
+  .form-title,
+  .section-title .sub-title {
+    font-size: 22px;
+  }
+
+  .why-us-item-1,
+  .why-us-item-2,
+  .why-us-item-3 {
+    width: calc(100% - 35px);
+  }
 }
 
 @media (max-width: 575px) {
+  .header-logo a,
+  .footer-logo {
+    font-size: 22px;
+  }
+  .circular-img {
+    max-width: 230px;
+  }
+  .circular-img img {
+    max-width: 200px;
+  }
+  .circular-img-circle {
+    width: 230px;
+    height: 230px;
+  }
+
+  .btn-theme {
+    font-size: 14px;
+    padding: 5px 17px;
+  }
   .why-us-item-1,
   .why-us-item-2,
   .why-us-item-3 {
     width: calc(100% - 30px);
+  }
+  .footer-item {
+    text-align: center;
   }
 }
