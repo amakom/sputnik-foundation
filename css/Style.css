@@ -206,7 +206,7 @@ h3 {
   transition: all 0.5s ease;
 }
 .why-us-item-1:hover .icon {
-  color: var(--WHITE);
+  color: var(--black-90);
 }
 .why-us-item-1 h3 {
   color: var(--black-90);
@@ -256,7 +256,7 @@ h3 {
   transition: all 0.5s ease;
 }
 .why-us-item-2:hover .icon {
-  color: var(--WHITE);
+  color: var(--black-90);
 }
 .why-us-item-2 h3 {
   color: var(--black-90);
@@ -306,7 +306,7 @@ h3 {
   transition: all 0.5s ease;
 }
 .why-us-item-3:hover .icon {
-  color: var(--WHITE);
+  color: var(--black-90);
 }
 .why-us-item-3 h3 {
   color: var(--black-90);
