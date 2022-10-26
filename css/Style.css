@@ -164,6 +164,11 @@ h3 {
   font-weight: 600;
   color: var(--black-90);
 }
+.section-title .sub-title-1 {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--black-90);
+}
 
 /*---- future start ---*/
 
@@ -344,8 +349,11 @@ h3 {
   height: 48px;
 }
 /*-------------------------------
- 10. =page loader
+ 10. =about-us section
 ---------------------------------*/
+.about-section .circular-img-circle {
+
+}
 
 /*-------------------------------
  11. =circular img
@@ -842,8 +850,98 @@ textarea.form-control {
   background-color: var(--yellow-light);
 }
 /*-------------------------------
- 26. =course details section
+ 26. =gallery section
 ---------------------------------*/
+
+.gallery-section{
+  padding: 80px 0 80px;
+  min-height: 100vh;
+}
+
+.gallery-section .section-title{
+  margin-bottom: 40px;
+}
+
+.gallery-section .gallery-filter{
+  padding: 0 15px;
+  flex: 0 0 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-section .filter-item{
+  border: 1px solid var(--main-color);
+  display: inline-block;
+  margin: 0 5px 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.gallery-section .filter-item:hover:not(.active){
+  opacity: 0.6;
+}
+.gallery-section .filter-item.active{
+  color: var(--main-color);
+}
+
+.gallery-section .gallery-img-item{
+  flex:0 0 33.33%;
+  max-width: 33.33%;
+  margin: 15px;
+  padding:15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery-section .gallery-img-item-inner{
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.gallery-section .gallery-img-inner img{
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.gallery-section .gallery-img-item-inner:hover .gallery-img-inner img{
+  transform: translateY(-25px);
+}
+.gallery-section .gallery-img-inner{
+  position: relative;
+}
+.gallery-section .gallery-img-inner .view-image{
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--main-color);
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 2px;
+  bottom: -4px;
+  transform: translateY(-5px);
+  z-index: 1;
+  opacity: 0;
+}
+.gallery-section .gallery-img-item-inner:hover .view-image{
+  transform: translateY(0px);
+  opacity: 1;
+}
+.gallery-section .gallery-image-details{
+  display: none;
+}
+
+.gallery-section .gallery-img-item-inner p{
+  font-size: 16px;
+  margin: 10px 0 0;
+  text-transform: capitalize;
+}
 
 /*-------------------------------
  27. =contact section
