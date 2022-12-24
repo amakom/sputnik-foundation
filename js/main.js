@@ -171,3 +171,154 @@ function themeLightDark(){
     }
 }
 themeLightDark();
+
+
+function bodyScrollingToggle(){
+    document.body.classList.toggle("hidden-scrolling");
+}
+/*---------------------------------
+gallery filtert & popup
+-----------------------------------*/
+
+(() =>{
+
+    const filterContainer = document.querySelector(".gallery-filter"),
+    portfolioItemsContainer = document.querySelector(".gallery-items"),
+    portfolioItems = document.querySelectorAll(".gallery-img-item"),
+    popup = document.querySelector(".gallery-popup"),
+    prevBtn = popup.querySelector(".gp-prev"),
+    nextBtn = popup.querySelector(".gp-next"),
+    closeBtn = popup.querySelector(".gp-close"),
+    projectDetailsContainer = popup.querySelector(".gp-details"),
+    projectDetailsBtn = popup.querySelector(".gp-img-details-btn");
+    let itemIndex, slideIndex, screenshots;
+
+    /* filter portfolio items */
+    filterContainer.addEventListener("click", (event)=>{
+        if(event.target.classList.contains("filter-item") &&
+        !event.target.classList.contains("active")){
+            // deactivate existing active 'filter-item'
+            filterContainer.querySelector(".active").classList.remove("active");
+            // activate new 'filter item'
+            event.target.classList.add("active");
+            const target = event.target.getAttribute("data-target");
+            portfolioItems.forEach((item) =>{
+                if(target === item.getAttribute("data-category") || target === 'all'){
+                    item.classList.remove("hide");
+                    item.classList.add("show");
+                }
+                else{
+                    item.classList.remove("show");
+                    item.classList.add("hide");
+                }
+            })
+        }
+    })
+
+
+    portfolioItemsContainer.addEventListener("click", (event) =>{
+        if(event.target.closest(".gallery-img-item-inner")){
+            const portfolioItem = event.target.closest(".gallery-img-item-inner").parentElement;
+            // get the portfolioItem index
+            itemIndex = Array.from(portfolioItem.parentElement.children).indexOf(portfolioItem);
+            screenshots = portfolioItems[itemIndex].querySelector(".gallery-img-inner img").getAttribute("data-screenshots");
+            // convert screenshots into Array
+            screenshots = screenshots.split(",");
+            if(screenshots.length === 1){
+               prevBtn.style.display="none";
+               nextBtn.style.display="none";
+            }
+            else{
+                prevBtn.style.display="block";
+                nextBtn.style.display="block";
+            }
+            slideIndex = 0;
+            popupToggle();
+            popupSlideshow();
+            popupDetails();
+        }
+    })
+
+    closeBtn.addEventListener("click", () =>{
+        popupToggle();
+        if(projectDetailsContainer.classList.contains("active")){
+            popupDetailsToggle();
+        }
+    })
+
+    function popupToggle() {
+        popup.classList.toggle("open");
+        bodyScrollingToggle();
+    }
+
+    function popupSlideshow(){
+        const imgSrc = screenshots[slideIndex];
+        const popupImg = popup.querySelector(".gp-img");
+        /* activate loader until the poupImg loaded  */
+        popup.querySelector(".gp-loader").classList.add("active");
+        popupImg.src=imgSrc;
+        popupImg.onload = () =>{
+           // deactivate loader after the popupImg loaded
+           popup.querySelector(".gp-loader").classList.remove("active");
+        }
+        popup.querySelector(".gp-counter").innerHTML = (slideIndex+1) + " of " + screenshots.length;
+    }
+
+    // next slide
+    nextBtn.addEventListener("click", () =>{
+        if(slideIndex === screenshots.length-1){
+            slideIndex = 0;
+        }
+        else{
+            slideIndex++;
+        }
+        popupSlideshow();
+    })
+
+    // prev slide
+    prevBtn.addEventListener("click", () =>{
+        if(slideIndex === 0){
+            slideIndex = screenshots.length-1
+        }
+        else{
+            slideIndex--;
+        }
+        popupSlideshow();
+    })
+
+    function popupDetails(){
+        // if gallery-image-details mot exists
+        if(!portfolioItems[itemIndex].querySelector(".gallery-images-title")){
+            projectDetailsBtn.style.display="none";
+            return; /*end function execution*/
+        }
+        projectDetailsBtn.style.display="block";
+        // get the project details
+        const details = portfolioItems[itemIndex].querySelector(".gallery-image-details").innerHTML;
+        popup.querySelector(".gp-photo-details").innerHTML = details;
+        const title = portfolioItems[itemIndex].querySelector(".gallery-images-title").innerHTML;
+        popup.querySelector(".gp-title h2").innerHTML = title;
+        const category = portfolioItems[itemIndex].getAttribute("data-category");
+    }
+
+    projectDetailsBtn.addEventListener("click",() =>{
+        popupDetailsToggle();
+    })
+
+    function popupDetailsToggle(){
+        if(projectDetailsContainer.classList.contains("active")){
+            projectDetailsBtn.querySelector("i").classList.remove("fa-minus");
+            projectDetailsBtn.querySelector("i").classList.add("fa-plus");
+            projectDetailsContainer.classList.remove("active");
+            projectDetailsContainer.style.maxHeight =0 + "px"
+        }
+        else{
+           projectDetailsBtn.querySelector("i").classList.remove("fa-plus");
+           projectDetailsBtn.querySelector("i").classList.add("fa-minus");
+           projectDetailsContainer.classList.add("active");
+           projectDetailsContainer.style.maxHeight = projectDetailsContainer.scrollHeight + "px";
+           popup.scrollTo(0,projectDetailsContainer.offsetTop);
+        }
+    }
+
+})();
